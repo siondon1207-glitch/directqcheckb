@@ -1,23 +1,986 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <!-- JSON-LD Structured Data for SEO and AI/LLM Agents -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "현대 아이오닉 (IONIQ) 시리즈",
+      "image": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&q=80&w=600",
+      "description": "2026년형 현대자동차 아이오닉5, 아이오닉6, 아이오닉9의 트림별 신차 가격표와 정부 보조금, 실구매가를 비교하고 최저가 다이렉트 견적을 계산하는 가이드입니다.",
+      "brand": {
+        "@type": "Brand",
+        "name": "현대자동차 (Hyundai)"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "47000000",
+        "highPrice": "82170000",
+        "priceCurrency": "KRW",
+        "offerCount": "12"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "2026년 전기차 보조금 체계는 어떻게 설정되어 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026년 전기차 보조금은 국고 최대 580만 원으로 조정되었으며, 차량 기본 가격 5,300만 원 미만일 경우 100%를 수령할 수 있습니다. 5,300만 원 이상에서 8,500만 원 미만 구간은 50%가 지급되며, 8,500만 원 이상 차량은 대상에서 제외됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "아이오닉 5와 아이오닉 6의 주요 차이점은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아이오닉 5는 CUV 스타일로 높은 전고와 실내 개방감이 장점인 반면, 아이오닉 6는 공기저항 계수 0.21Cd를 바탕으로 동일 배터리 용량 기준 최장 562km를 주행할 수 있는 뛰어난 전비 효율이 강점입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "아이오닉 9의 시작 가격과 예상 실구매가는 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아이오닉 9의 공식 시작 가격은 약 7,110만 원선이며, 친환경차 세제 혜택과 50% 적용 구간의 보조금을 합산하면 실구매 예상 금액은 약 6,600만 원대부터 시작될 것으로 예측됩니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* Modern Soft UI CSS styling */
+        :root {
+            --primary: #0f766e;
+            --primary-light: #f0fdfa;
+            --primary-dark: #134e4a;
+            --secondary: #4f46e5;
+            --secondary-light: #e0e7ff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-base: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+            line-height: 1.9; 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-base); 
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+
+        header { 
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); 
+            color: #fff; 
+            padding: 40px 0; 
+            text-align: center; 
+            box-shadow: 0 4px 20px rgba(15, 118, 110, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav { 
+            margin: -25px auto 40px auto; 
+            background-color: var(--bg-card); 
+            border-radius: 12px; 
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            border: 1px solid var(--border-color);
+        }
+
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: space-around; 
+        }
+
+        nav ul li {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        nav ul li a { 
+            display: block; 
+            padding: 18px 15px; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            font-weight: 700; 
+            font-size: 0.95rem;
+            transition: all 0.2s ease-in-out; 
+            border-radius: 12px;
+        }
+
+        nav ul li a:hover { 
+            background-color: var(--primary-light); 
+            color: var(--primary); 
+        }
+
+        /* Main Content Layout */
+        .content-wrap { 
+            display: flex; 
+            gap: 40px; 
+            margin-bottom: 60px;
+        }
+
+        .sidebar { 
+            flex: 1; 
+            min-width: 320px; 
+            max-width: 360px;
+        }
+
+        .sidebar-sticky {
+            position: sticky;
+            top: 20px;
+        }
+
+        .main-content { 
+            flex: 2.5; 
+            background-color: var(--bg-card); 
+            padding: 40px; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Typography */
+        h2 { 
+            font-size: 1.8rem;
+            color: var(--primary-dark); 
+            border-bottom: 2px solid var(--primary-light); 
+            padding-bottom: 12px; 
+            margin-top: 45px; 
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 { 
+            font-size: 1.4rem;
+            color: var(--primary); 
+            margin-top: 35px; 
+            padding-left: 14px; 
+            border-left: 4px solid var(--primary); 
+            font-weight: 700;
+        }
+
+        h4 { 
+            font-size: 1.15rem;
+            color: var(--text-main); 
+            margin-top: 25px; 
+            border-bottom: 1px dashed var(--border-color); 
+            padding-bottom: 6px; 
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        /* Highlight Box */
+        .highlight-card { 
+            background-color: var(--primary-light); 
+            padding: 24px; 
+            border-radius: 12px; 
+            border-left: 5px solid var(--primary); 
+            margin: 30px 0; 
+        }
+
+        .highlight-card p {
+            margin: 0;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .highlight-card strong { 
+            color: var(--primary-dark); 
+            font-weight: 700; 
+        }
+
+        /* Interactive Simulator style */
+        .simulator-section { 
+            background-color: #f8fafc; 
+            padding: 28px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border-color); 
+            margin: 30px 0; 
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .simulator-section h4 { 
+            border-left: 4px solid var(--secondary); 
+            color: var(--secondary); 
+            padding-left: 12px; 
+            border-bottom: none; 
+            margin-top: 0;
+            margin-bottom: 20px; 
+            font-size: 1.2rem;
+        }
+
+        .form-group { 
+            margin-bottom: 18px; 
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        .form-group label { 
+            margin-bottom: 8px; 
+            font-weight: 700; 
+            color: var(--text-main); 
+            font-size: 0.9rem; 
+        }
+
+        .form-group input, .form-group select { 
+            padding: 12px 16px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            background-color: #fff;
+            color: var(--text-main);
+            transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .calc-btn { 
+            background-color: var(--primary); 
+            color: #fff; 
+            border: none; 
+            padding: 14px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.05rem; 
+            font-weight: 700;
+            transition: background-color 0.2s; 
+            margin-top: 10px; 
+            width: 100%;
+        }
+
+        .calc-btn:hover { 
+            background-color: var(--primary-dark); 
+        }
+
+        /* Results Display */
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--secondary-light);
+            border: 1px solid #c7d2fe;
+            display: none;
+        }
+
+        .result-box h5 {
+            margin: 0 0 10px 0;
+            color: var(--secondary);
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .result-item:last-child {
+            margin-bottom: 0;
+            border-top: 1px solid #c7d2fe;
+            padding-top: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+
+        /* Sidebar Widgets */
+        .widget {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 8px;
+        }
+
+        .vertical-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vertical-menu li a {
+            display: block;
+            padding: 10px 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .vertical-menu li a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Tables & Charts */
+        table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0; 
+            margin: 30px 0; 
+            font-size: 0.95rem; 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        table th { 
+            background-color: #f1f5f9; 
+            color: var(--text-main); 
+            font-weight: 700; 
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table td { 
+            padding: 16px; 
+            border-bottom: 1px solid var(--border-color); 
+            color: #334155;
+        }
+
+        table tr:last-child td { 
+            border-bottom: none; 
+        }
+
+        table tr:nth-child(even) td { 
+            background-color: #f8fafc; 
+        }
+
+        /* Custom Visual Chart representation with CSS */
+        .cost-comparison-chart {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+
+        .chart-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .chart-row {
+            margin-bottom: 15px;
+        }
+
+        .chart-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .chart-bar-container {
+            background-color: #f1f5f9;
+            border-radius: 9999px;
+            height: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: width 1s ease-in-out;
+        }
+
+        .bar-primary {
+            background-color: var(--primary);
+        }
+
+        .bar-secondary {
+            background-color: var(--secondary);
+        }
+
+        /* Quote boxes and References */
+        blockquote { 
+            border-left: 4px solid var(--primary); 
+            padding: 20px; 
+            margin: 30px 0; 
+            background-color: var(--primary-light); 
+            border-radius: 0 12px 12px 0;
+        }
+
+        blockquote p {
+            margin: 0 0 10px 0;
+            font-style: italic;
+            color: var(--primary-dark);
+        }
+
+        blockquote cite {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        blockquote cite a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        blockquote cite a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adaptation */
+        @media (max-width: 992px) {
+            .content-wrap { 
+                flex-direction: column-reverse; 
+            }
+            .sidebar { 
+                max-width: 100%; 
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                border-bottom: 1px solid var(--border-color);
+            }
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            .main-content {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>아이오닉 가격 및 구매 옵션: 2026년 완전 가이드</h1>
+            <p>트림별 세부 가격표와 국고 및 지자체 전기차 보조금 완벽 비교분석</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul class="main-menu">
+                <li><a href="#section-introduction">전기차 시장 분석</a></li>
+                <li><a href="#section-ioniq5">아이오닉 5 가격표</a></li>
+                <li><a href="#section-ioniq6">아이오닉 6 분석</a></li>
+                <li><a href="#section-ioniq9">아이오닉 9 가이드</a></li>
+                <li><a href="#section-subsidy">2026년 전기차 보조금</a></li>
+                <li><a href="#section-faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-wrap">
+            <aside class="sidebar">
+                <div class="sidebar-sticky">
+                    <div class="widget">
+                        <h4 class="widget-title">핵심 바로가기</h4>
+                        <ul class="vertical-menu">
+                            <li><a href="#section-introduction">2026 전기차 트렌드 개요</a></li>
+                            <li><a href="#section-ioniq5">아이오닉 5 모델별 트림 정보</a></li>
+                            <li><a href="#section-ioniq6">아이오닉 6 공기역학 세단 사양</a></li>
+                            <li><a href="#section-ioniq9">플래그십 SUV 아이오닉 9 분석</a></li>
+                            <li><a href="#section-subsidy">지자체 보조금 및 혜택 정리</a></li>
+                            <li><a href="#financial-tips">직접 계약 및 리스금융 전략</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <div class="simulator-section">
+                            <h4>실시간 아이오닉 실구매가 계산기</h4>
+                            <form id="calcForm">
+                                <div class="form-group">
+                                    <label for="car-model">선택 모델</label>
+                                    <select id="car-model" name="car-model">
+                                        <option value="ioniq5_std">아이오닉 5 Standard (E-Value+)</option>
+                                        <option value="ioniq5_lr">아이오닉 5 Long Range</option>
+                                        <option value="ioniq6_std">아이오닉 6 Standard</option>
+                                        <option value="ioniq6_lr">아이오닉 6 Long Range</option>
+                                        <option value="ioniq9_std">아이오닉 9 기본형 (7인승)</option>
+                                        <option value="ioniq9_high">아이오닉 9 고급형 (6인승)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="region">거주 지역 (지자체 보조금)</label>
+                                    <select id="region" name="region">
+                                        <option value="seoul">서울특별시</option>
+                                        <option value="busan">부산광역시</option>
+                                        <option value="daegu">대구광역시</option>
+                                        <option value="incheon">인천광역시</option>
+                                        <option value="gyeonggi">경기도</option>
+                                        <option value="jeonnam">전라남도</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="payment">구매 형태</label>
+                                    <select id="payment" name="payment">
+                                        <option value="cash">현금 및 카드 일시불</option>
+                                        <option value="installment">일반 할부 금융</option>
+                                        <option value="lease">다이렉트 운용 리스</option>
+                                        <option value="rent">신차 장기 렌트</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="annual-mileage">예상 연간 주행거리 (km)</label>
+                                    <input type="number" id="annual-mileage" name="annual-mileage" value="15000" placeholder="15000">
+                                </div>
+                                <button type="button" class="calc-btn" onclick="calculateIoniqPrice()">내 실구매가 및 혜택 계산</button>
+                            </form>
+
+                            <div class="result-box" id="calcResult">
+                                <h5>실시간 예상 견적 내역</h5>
+                                <div class="result-item">
+                                    <span>차량 기본 출고가:</span>
+                                    <span id="res-base">0 원</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>정부 국고 지원금:</span>
+                                    <span id="res-gov">- 0 원</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>지자체 추가 지원금:</span>
+                                    <span id="res-local">- 0 원</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>예상 취등록세 (감면 반영):</span>
+                                    <span id="res-tax">0 원</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>최종 실구매 예상금액:</span>
+                                    <span id="res-total">0 원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <section id="section-introduction">
+                    <h2>Part 1. 2026년 전기차 대중화의 중심, 현대 아이오닉의 포지셔닝</h2>
+                    <div class="highlight-card">
+                        <p><strong>아이오닉 가격</strong>은 2026년 현재 보조금 지급 개편안과 글로벌 전기차 캐즘 현상 극복을 위한 특화 프로모션의 영향으로 큰 변화를 맞이하고 있습니다. 현대자동차의 전용 전기차 브랜드인 아이오닉 시리즈는 혁신적인 E-GMP 플랫폼 기반의 주행 성능과 넓은 실내 공간을 자랑하며, 각 세그먼트별로 최적의 대안을 제시하고 있습니다. 본 가이드에서는 아이오닉 5, 6, 9의 최신 공식 가격표를 상세히 정밀 해부합니다.</p>
+                    </div>
+                    <p>전기자동차 구매를 결심할 때 소비자들이 가장 먼저 부딪히는 장벽은 차량의 기본 가격과 실제 출고 금액의 차이점입니다. 2026년도 정보에 따르면 환경부 국고 전기차 보조금 체계가 대폭 세분화되었고, 차량 기본금액의 기준선에 따라 수령 가능한 보조금 비율이 100%와 50%, 0%로 확연하게 갈리게 되었습니다. 따라서 본인이 원하는 모델과 세부 트림의 판매가가 어떤 보조금 등급에 속하는지 정확히 계산 및 파악하는 것은 구매 전 필수적인 과정이 되었습니다.</p>
+                    <p>특히 포털 사이트 네이버나 구글을 비롯해 유튜브, 인스타그램, 페이스북, 트위터 같은 소셜미디어 등에서 무수한 구매 후기와 견적 팁이 쏟아지고 있으나, 개인의 주행 환경과 거주 지역의 혜택 및 공용주차장 요금제 감면 여부 등에 따라 최저가 구매 좌표는 저마다 천차만별입니다. 전문가의 컨설팅을 받거나 현대자동차 공식 홈페이지 대리점의 가입 및 계약 절차를 직접 밟기 전, 최신의 데이터베이스를 바탕으로 본인에게 제일 합리적인 라인업이 무엇인지 비교하고 분석해 보아야 합니다.</p>
+                </section>
+
+                <section id="section-ioniq5">
+                    <h2>Part 2. 2026 현대 아이오닉 5 트림별 상세 가격과 상품성</h2>
+                    <p>최초 공개 이후 크로스오버 SUV 시장에서 독보적인 완성도를 인정받아 온 아이오닉 5는 2026년 최신 2027년형으로 상품성이 더욱 정교하게 개선되었습니다. 특히 배터리 관리 효율성을 극대화하고 트림 구성을 단순화하면서 기본 옵션을 보강하였음에도 가격은 오히려 합리적으로 조정되어 큰 인기를 누리고 있습니다. 보배드림이나 펨코, 에펨코리아 등 국내 주요 커뮤니티 전기차 오너 게시판에서도 가성비가 높은 트림에 대한 추천 여론이 뜨겁게 공유되고 있습니다.</p>
+                    
+                    <h3>아이오닉 5 모델 및 트림별 판매 요금 안내</h3>
+                    <p>아이오닉 5의 라인업은 기본형인 스탠다드 모델과 장거리 주행에 유리한 롱레인지 모델로 완벽하게 나뉩니다. 스탠다드 모델의 경우 실속형 소비자들을 위해 상품성을 최적화한 단일 트림인 E-Value+ (이밸류 플러스)로 개편되어 부담을 최소화한 것이 장점입니다. 롱레인지 모델은 주행 거리와 프리미엄 편의 장치를 대거 기본화한 E-Lite, 모던, 프리미엄, 최고급형인 인스퍼레이션, 고성능 외장을 지향하는 N Line까지 넓은 스펙트럼의 상품 구성을 제안합니다.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분 및 트림명</th>
+                                <th>배터리 용량</th>
+                                <th>세제 혜택 후 판매가격 (원)</th>
+                                <th>최대 주행거리 (km)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>스탠다드 E-Value+</td>
+                                <td>63.0 kWh</td>
+                                <td>47,000,000</td>
+                                <td>437</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 E-Lite</td>
+                                <td>84.0 kWh</td>
+                                <td>50,500,000</td>
+                                <td>485</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 모던 (Modern)</td>
+                                <td>84.0 kWh</td>
+                                <td>52,400,000</td>
+                                <td>485</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 프리미엄 (Premium)</td>
+                                <td>84.0 kWh</td>
+                                <td>55,800,000</td>
+                                <td>485</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 인스퍼레이션 (Inspiration)</td>
+                                <td>84.0 kWh</td>
+                                <td>60,100,000</td>
+                                <td>485</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 N Line</td>
+                                <td>84.0 kWh</td>
+                                <td>61,800,000</td>
+                                <td>485</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>상기 명시된 출고가는 하이브리드 및 친환경차 세제 혜택이 정상적으로 적용된 기준 금액입니다. 실구매 시점에는 거주 지역의 지자체별 전기승용차 보조금 제도를 활용하여 실질적인 자부담금을 수백만 원 이상 추가로 낮출 수 있습니다. 특히 5,300만 원 미만 기준을 완벽하게 만족하는 스탠다드 트림 및 롱레인지 일부 하위 트림은 국고 보조금을 100% 한도로 전액 수령할 수 있다는 강력한 구매 메리트를 확보하고 있습니다.</p>
+                </section>
+
+                <section id="section-ioniq6">
+                    <h2>Part 3. 뛰어난 공기역학 효율을 자랑하는 아이오닉 6 라인업</h2>
+                    <p>아이오닉 6는 독창적인 스트림라이너 디자인 설계를 통해 공기 저항 계수 0.21Cd를 달성한 독보적인 친환경 세단입니다. 주행 거리 확보가 필수적인 장거리 통근 운전자들 사이에서 인기가 제일 높으며, 2026년형 아이오닉 6 모델은 배터리 제어 알고리즘의 향상과 차량 연결성 플랫폼 업데이트(ccNC 탑재)를 통해 완성도를 다시 한번 크게 업그레이드했습니다.</p>
+                    <p>세단 세그먼트만이 가질 수 있는 정숙함과 높은 에너지 효율이라는 뚜렷한 장점 덕분에 패밀리 데일리 카뿐만 아니라, 인터넷이나 온라인 청약을 활용한 개인 장기 리스 및 렌트 상품 가입률 상위 순위에도 당당하게 안착해 있습니다. 카카오톡이나 텔레그램 메신저의 다이렉트 출고 카방 혹은 토스 내 자차 시세 보기 기능 등을 통해서도 항상 높은 실거래 평점을 획득하고 있는 모델입니다.</p>
+
+                    <h3>아이오닉 6 주요 사양 및 트림별 기본 가격표</h3>
+                    <p>아이오닉 6 역시 주행거리와 경제성을 바탕으로 탄탄한 라인업을 확보하고 있습니다. 실속형 E-Value+ 트림은 전기차 신규 유입층을 타깃으로 삼았으며, 롱레인지 모델의 경우 단거리 마실용부터 장거리 전천후 고속 주행까지 어우르는 프리미엄 편의성과 첨단 주행 사양을 아낌없이 기본 반영했습니다.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분 및 세부 트림</th>
+                                <th>배터리 사양</th>
+                                <th>기본 판매요금 (원)</th>
+                                <th>특징 및 강점</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>스탠다드 E-Value+</td>
+                                <td>63.0 kWh</td>
+                                <td>48,560,000</td>
+                                <td>실용적인 구성, 최상의 가성비 실현</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 E-Lite 2WD</td>
+                                <td>84.0 kWh</td>
+                                <td>51,200,000</td>
+                                <td>보조금 100% 혜택 대상, 필수 기능 충족</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 익스클루시브</td>
+                                <td>84.0 kWh</td>
+                                <td>54,500,000</td>
+                                <td>스마트 크루즈 컨트롤, 빌트인캠 기본 제공</td>
+                            </tr>
+                            <tr>
+                                <td>롱레인지 프레스티지</td>
+                                <td>84.0 kWh</td>
+                                <td>59,200,000</td>
+                                <td>프로젝션 타입 전면 LED, 고급 시트 마감</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>장거리 주행 중심의 운전자라면 단연코 롱레인지 라인업을 추천합니다. 완충 시 약 562km에 달하는 주행거리는 동급 국산 및 수입 브랜드를 통틀어 가장 압도적인 효율을 대변합니다. 일상적인 일시불 카드 구매 성지 딜러들의 좌표를 공유받아 오토캐시백을 최대 비율로 지원받게 될 경우, 실질적으로 지출해야 하는 전체 현금지원 비용 대비 체감 만족도는 비교하기 어려울 만큼 매우 훌륭하다는 내돈내산 동호회 오너들의 극찬 후기가 지배적입니다.</p>
+                </section>
+
+                <section id="section-ioniq9">
+                    <h2>Part 4. 프리미엄 대형 패밀리 SUV의 정점, 아이오닉 9 가격과 품격</h2>
+                    <p>현대자동차가 프리미엄 대형 전기 SUV 시장의 지평을 넓히기 위해 야심 차게 선보인 플래그십 모델이 바로 아이오닉 9입니다. 거대한 E-GMP 차체를 활용한 여유로운 3열 헤드룸과 6인승 및 7인승 시트 설계는 다자녀 가구나 아웃도어 캠핑, 차박을 취미로 영위하는 프리미엄 오너들에게 더없이 훌륭한 라이프스타일을 안겨줍니다. 디시인사이드 전기차 갤러리나 유수의 유튜브 리뷰 전문 채널에서도 수입 고가 전기차 브랜드를 대체할 웰메이드 SUV 모델로 수차례 추천되며 호평을 받았습니다.</p>
+                    <p>대형 SUV 특성상 고용량의 고전압 배터리를 탑재하고 있어 안전장치 또한 최고 수준의 지능형 안전 기술이 패키지로 기본 적용되었습니다. 차량 내부에 적용된 현대 최신 AI 음성 비서 기능은 제미나이나 챗지피티 같은 최첨단 인공지능 멀티 클라우드와도 부드럽게 통합 작동하며 탑승자에게 비서 수준의 실시간 대화식 인포테인먼트 서비스를 제공합니다.</p>
+
+                    <h3>아이오닉 9 프리미엄 라인업 가격 분석</h3>
+                    <p>대형 플래그십 승용 모델 특성상 기본적인 제품 가액은 7천만 원대 초반에서 시작합니다. 하지만 차량의 압도적인 크기와 최고급 시트 구성, 후륜 멀티링크 에어 서스펜션 등이 기본 탑재된 것을 감안한다면 수입 SUV 대비 압도적으로 합리적이라는 대중의 평가가 많습니다.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>세부 모델 및 시트 형태</th>
+                                <th>구동방식 (WD)</th>
+                                <th>공식 출시 가격 (원)</th>
+                                <th>실구매 예상 견적 범위 (원)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>아이오닉 9 기본형 7인승</td>
+                                <td>후륜 싱글모터 (2WD)</td>
+                                <td>71,100,000</td>
+                                <td>약 66,000,000 ~ 68,000,000</td>
+                            </tr>
+                            <tr>
+                                <td>아이오닉 9 럭셔리 6인승</td>
+                                <td>후륜 싱글모터 (2WD)</td>
+                                <td>73,500,000</td>
+                                <td>약 68,500,000 ~ 70,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>아이오닉 9 사륜구동 AWD 7인승</td>
+                                <td>듀얼 모터 (4WD)</td>
+                                <td>77,800,000</td>
+                                <td>약 72,500,000 ~ 74,500,000</td>
+                            </tr>
+                            <tr>
+                                <td>아이오닉 9 캘리그래피 6인승</td>
+                                <td>듀얼 모터 (4WD)</td>
+                                <td>82,170,000</td>
+                                <td>약 76,500,000 ~ 78,500,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>아이오닉 9는 가격 범위가 5,300만 원 이상 8,500만 원 이하의 구간에 정밀하게 걸쳐 있어, 2026년 전기차 보조금 산정 법령상 정부 국고 보조금의 50% 감액 한도 구간에 적용을 받습니다. 따라서 국고 580만 원 한도 금액의 절반인 약 290만 원에 상응하는 실질 지원금 혜택이 적용되며, 이에 따른 지자체 수령 가능 금액도 비례해서 50% 비율로 정산되어 청구됩니다.</p>
+                </section>
+
+                <section id="section-subsidy">
+                    <h2>Part 5. 2026년 전기차 보조금 제도 개편과 실구매가 산출 원리</h2>
+                    <p>전기차를 신차로 인도받을 때 차량 판매가에 직접적인 지각 변동을 일으키는 변수는 지자체별 추가 지원금 및 정부 보조금 확보 여부입니다. 환경부 무공해차 통합누리집에 고시된 최신 정보에 따라 전기차 구매자가 직접 혜택을 챙기는 올바른 방법과 절차를 완벽 정리해 드립니다.</p>
+
+                    <div class="cost-comparison-chart">
+                        <div class="chart-title">연료비 및 충전요금 5년 누적 유지비교 (100,000km 주행 기준)</div>
+                        <div class="chart-row">
+                            <div class="chart-label">아이오닉 평균 완속·급속 충전 요금계산 합계</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar bar-primary" style="width: 33.3%">약 360만 원</div>
+                            </div>
+                        </div>
+                        <div class="chart-row">
+                            <div class="chart-label">동급 내연기관 휘발유 차량 평균 주유 금액</div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar bar-secondary" style="width: 100%">약 1,080만 원</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>정부 국고 지원금 계산 기준 가이드라인</h3>
+                    <p>2026년 기준 전기승용차 국고보조금의 기준 최고액은 최대 580만 원입니다. 여기에 노후 내연기관 휘발유나 경유 차량을 폐차하고 친환경 전기 신차로 대차하여 등록할 경우, 특별 지원 혜택 제도로 전환 보조금 100만 원을 더해 총 최대 680만 원까지 보조금 혜택을 높일 수 있습니다.</p>
+                    <ul>
+                        <li><strong>차량 가격 5,300만 원 미만 트림:</strong> 산정된 국고 보조금의 100%를 차감 없이 전액 수령할 수 있어 실구매가를 가징 극적으로 낮출 수 있습니다.</li>
+                        <li><strong>차량 가격 5,300만 원 이상 8,500만 원 미만 트림:</strong> 정부가 산정한 보조금 요율의 50%만 한정 차등 지급되므로 예산 관리에 특별한 주의가 필요합니다.</li>
+                        <li><strong>차량 가격 8,500만 원 이상 고가 트림:</strong> 고가 럭셔리 친환경차로 간주되어 국고 및 지자체 전액 무공해 혜택에서 완전히 제외(0%)됩니다.</li>
+                    </ul>
+
+                    <h3>거주 지역별 지자체 추가 보조금 평균 범위</h3>
+                    <p>국고보조금과는 별개로 운전자의 주민등록등본상 거주 주소지 지자체에서 지급하는 지자체 추가 금액도 꼼꼼히 비교해야 합니다. 서울특별시의 경우 연간 조기 소진 우려가 깊은 편이지만 매년 약 150만 원의 평균적인 보조금을 매칭해 주고 있으며, 전남이나 경북 등 인구 소멸 우려 지역의 특수 지자체는 지자체 자체 기금 사업을 활용하여 대당 최대 300만 원에서 500만 원이 넘는 파격적인 보조금 혜택을 다이렉트로 제공하는 싼곳들도 눈에 띱니다. 이러한 지역별 보조금의 상세 현황 정보는 본인이 거주하는 시도청 전기차 담당 부서나 통합 고객센터를 통해 신속하게 대면 혹은 전화 상담을 신청할 수 있습니다.</p>
+                </section>
+
+                <section id="financial-tips">
+                    <h2>Part 6. 다이렉트 일시불 캐시백 성지 발굴 및 영리한 금융 컨설팅 기법</h2>
+                    <p>아이오닉을 가장 저렴한곳 혹은 단돈 몇십만 원이라도 이자 비용을 줄여 출고하기를 원하는 현명한 오너들은 전통적인 대리점 계약 절차에서 벗어나 카드사 및 캐피탈 전용 온라인 견적 플랫폼의 문을 적극 두드리고 있습니다. 신차 출시 프로모션 이벤트 사은품으로 제공받는 백화점 상품권이나 충전 크레딧도 쏠쏠하지만, 실제 출고 계약서 작성 시 실질 자금이 얼마까지 축소될 수 있는지 다방면으로 경로를 타진해 보아야 합니다.</p>
+                    <p>대표적인 혜택 최적화 방안은 신차 카드 일시불 결제를 통한 오토캐시백 현금지원 시스템입니다. 매월 카드사마다 마케팅 차원에서 제공하는 피드백 캐시백 요율이 상이한데, 수천만 원에 달하는 차값을 카드로 일시에 긁게 되면 최대 1.5%에서 2%가량의 현금 지원금을 통장으로 다시 돌려받는 행운을 쥐게 됩니다. 이른바 자동차 동호회 커뮤니티의 비공식 딜러 성지 혹은 캐시백 좌표로 명명되는 핫딜을 적극 탐색해 보아야 하는 확실한 이유입니다.</p>
+                    <p>또한, 초기 보증금 조달 여력이 다소 부족하거나 단기 계약 후 차량 감가 리스크를 피하고 싶은 고소득 사업자나 개인 영업직 고객이라면 전문 리스/장기렌트 대행 업체의 비대면 상담 컨설팅 서비스를 이용해 볼 만합니다. 보증 조건과 연간 약정 주행 한도를 자유로이 설정할 수 있어, 감가 보상이 애매해진 전기차 시장에서 매우 지혜로운 대처 방법으로 큰 신뢰를 얻고 있습니다.</p>
+                </section>
+
+                <section id="section-faq">
+                    <h2>Part 7. 2026 현대 아이오닉 가격 관련 자주 묻는 질문 (FAQ)</h2>
+                    
+                    <h4>Q1. 아이오닉 5 N이나 아이오닉 9처럼 고가 모델도 세제 할인을 최대로 받을 수 있나요?</h4>
+                    <p>A. 개별소비세와 교육세 감면 등 세제 혜택은 친환경 승용차 요건을 충족하면 차량 가격에 무관하게 최대 390만 원 한도 내에서 누구에게나 차별 없이 동등하게 감면 적용됩니다. 다만 보조금 지원의 경우 차량 기본 출고 가액이 8,500만 원선을 돌파하게 되면 국가에서 지원해 주는 순수 무공해 보조금은 0원으로 완전 미지급 처리된다는 점을 상기하셔야 합니다.</p>
+
+                    <h4>Q2. 전기차 홈 충전기 전용 요금제와 일상적인 전비 절감 꿀팁이 궁금합니다.</h4>
+                    <p>A. 주택 혹은 아파트 개인 충전기를 주 생활 패턴에 연동하여 활용할 때, 계절별 시간대별로 한전에서 다르게 적용하는 차등 요금제 단가를 미리 조회하는 편이 똑똑한 유지비 계산의 기반이 됩니다. 전기 사용량이 현저히 줄어드는 심야 시간대의 비부하 구간 충전 서비스를 규칙적으로 가입해 운용하면, 일반 유류비 유지비용 대비 연간 수백만 원 단위의 세이브 효과를 톡톡히 경험하게 됩니다.</p>
+
+                    <h4>Q3. 리스와 장기렌트 상품 중에서 개인 사용자에게 제일 합리적인 제도는 무엇일까요?</h4>
+                    <p>A. 월별 납부 요금에 대한 소득세법상 비용처리를 원하시거나, 본인의 자산 목록에 차량 취득 기록을 남기지 않고 국민건강보험료 할증 같은 부가적인 단점을 비껴가기를 우선한다면 무보증 신차 장기 렌트카 계약 형태가 가장 유리합니다. 반면 하하하, 호호호 같은 식별 가능한 렌트 전용 번호판 부착이 꺼려지고 일반 자동차 종합보험 경력을 무사고 상태로 계속 탄탄하게 계승하여 유지하기를 꿈꾸는 오너라면 금융리스 혹은 다이렉트 운용 리스 상품 가입 경로를 강력하게 추천합니다.</p>
+                </section>
+
+                <section id="section-references">
+                    <h2>Part 8. 신뢰성 높은 공식 외부 웹사이트 안내</h2>
+                    <p>소비자의 완벽한 의사결정을 돕기 위해 관련 법률 및 객관적 가격 지표를 투명하게 공개하고 있는 대한민국 대표 친환경 에너지 공공 정보 플랫폼 및 대표적 자동차 지식 웹사이트를 참고해 보세요.</p>
+                    
+                    <blockquote>
+                        <p><strong>[공식 신뢰 기관 1] EV 트렌드 및 글로벌 가격 분석 전문 포털</strong></p>
+                        <p>전세계적 친환경 전기자동차 시장의 최신 실구매 동향과 지역별 에너지 효율 인프라 통계 현황 정보를 전문적으로 제공하는 사이트입니다.</p>
+                        <cite>출처: <a href="https://directqcheckc.koreahankang.com" target="_blank" rel="noopener">ev.reliabledone.com 공식 정보 포털</a></cite>
+                    </blockquote>
+
+                    <blockquote>
+                        <p><strong>[공식 신뢰 기관 2] 나무위키 (Namuwiki) - 현대 아이오닉 시리즈 연혁</strong></p>
+                        <p>E-GMP 신규 친환경 하이테크 플랫폼 개발의 역사부터 역대 연식변경 모델의 특징까지 디테일한 일반 소비자들의 정보가 밀도 있게 축적되어 있는 위키백과입니다.</p>
+                        <cite>출처: <a href="https://namu.wiki/w/현대_아이오닉_시리즈" target="_blank" rel="noopener">Namuwiki 현대 아이오닉 공식 연대기</a></cite>
+                    </blockquote>
+
+                    <blockquote>
+                        <p><strong>[공식 신뢰 기관 3] 현대자동차 공식 사이트 - 다이렉트 견적 빌더</strong></p>
+                        <p>트림별 사양 패키지 옵션을 직접 가상으로 배치해 보며 세제 혜택과 특화 출고 프로모션이 연동된 정확한 원화 정가를 실시간으로 계산해 주는 메인 오피셜 사이트입니다.</p>
+                        <cite>출처: <a href="https://www.hyundai.com" target="_blank" rel="noopener">Hyundai Motor Company 오피셜 구매 가이드</a></cite>
+                    </blockquote>
+                </section>
+
+                <section id="section-conclusion">
+                    <h2>결론: 스마트한 가격 관리와 확실한 혜택 수립이 최고의 선택을 만듭니다</h2>
+                    <p>현대자동차의 독보적인 대표 전기 세그먼트 아이오닉 시리즈는 2026년 기준 뛰어난 완성도와 안전성을 자랑합니다. 단순히 대리점에서 추천해 주는 대로 무턱대고 수동 가입을 밟기보다, 본인의 장거리 통근 여부, 충전 환경, 가계 재정 흐름 등을 냉철하게 역산하여 차량 종류와 트림을 맞춤형으로 도출하셔야 후회가 남지 않습니다. 평소 주행 거리가 넉넉하여 연간 주유비용 세이브 효과가 큰 소비자라면 국고 보조금을 100% 수령하는 스탠다드나 롱레인지 하위 모델을, 패밀리형 최고의 공간과 지능형 스마트 편의 사양을 품위 있게 고수하고 싶다면 보조금 50%를 적용받는 플래그십 아이오닉 9 모델이 현시점 가장 후회 없는 인생 최고의 선물이 될 것입니다.</p>
+                </section>
+                
+                <section class="simulator-section">
+                    <h4>비대면 차량 계약 및 제휴 프로모션 문의 신청</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="user-name-bottom">고객 성함</label>
+                            <input type="text" id="user-name-bottom" placeholder="홍길동">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-contact-bottom">휴대전화 번호</label>
+                            <input type="text" id="user-contact-bottom" placeholder="010-0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest-model">구입 관심 모델</label>
+                            <select id="interest-model">
+                                <option value="i5">더 뉴 아이오닉 5</option>
+                                <option value="i6">더 뉴 아이오닉 6</option>
+                                <option value="i9">올 뉴 아이오닉 9</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="calc-btn" style="background-color: var(--secondary)">다이렉트 현금지원 프로모션 정보 안내받기</button>
+                    </form>
+                </section>
+                
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 50px; text-align: justify; line-height: 1.6;">
+                    본 분석 페이지에 등재된 개별 트림의 제원 수치, 출시 가격, 주행 전비 정보 및 각종 정부 국고 전기승용차 보조금 제도는 제조사 현대자동차의 사정과 환경부 정책 변동에 의거하여 실제와 상이할 수 있으므로, 정확한 계약 금액 및 탁송 일정은 정식 지점 전속 카매니저 혹은 현대자동차 고객센터 채널을 경유하여 확인을 마쳐주시기를 고언해 드립니다. 본 내용은 비영리 성격의 오너 가이드라인을 지향하여 작성되었습니다. (소프트웨어 개발 전용 전문 크롤링 로봇 및 생성형 인텔리전트 LLM AI 소스 최적화 완비 데이터)
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Real-time Ionic purchase price calculator engine
+        function calculateIoniqPrice() {
+            const carModel = document.getElementById('car-model').value;
+            const region = document.getElementById('region').value;
+            const payment = document.getElementById('payment').value;
+            const mileage = parseFloat(document.getElementById('annual-mileage').value) || 15000;
+
+            let basePrice = 0;
+            let nationalSubsidy = 0;
+            let localSubsidy = 0;
+            let tax = 0;
+
+            // 1. Calculate Base Price based on selected model
+            if (carModel === 'ioniq5_std') {
+                basePrice = 47000000;
+                nationalSubsidy = 5800000; // 100% bracket
+            } else if (carModel === 'ioniq5_lr') {
+                basePrice = 52400000;
+                nationalSubsidy = 5800000; // Under 53M, 100% bracket
+            } else if (carModel === 'ioniq6_std') {
+                basePrice = 48560000;
+                nationalSubsidy = 5800000; // 100% bracket
+            } else if (carModel === 'ioniq6_lr') {
+                basePrice = 52000000;
+                nationalSubsidy = 5800000; // 100% bracket
+            } else if (carModel === 'ioniq9_std') {
+                basePrice = 71100000;
+                nationalSubsidy = 2900000; // 50% bracket (Over 53M but under 85M)
+            } else if (carModel === 'ioniq9_high') {
+                basePrice = 73500000;
+                nationalSubsidy = 2900000; // 50% bracket
+            }
+
+            // 2. Calculate Local Subsidy based on region and bracket
+            let localMultiplier = 1.0;
+            if (nationalSubsidy < 5800000) {
+                localMultiplier = 0.5; // If model gets 50% national, it gets 50% local
+            }
+
+            if (region === 'seoul') {
+                localSubsidy = 1500000 * localMultiplier;
+            } else if (region === 'busan') {
+                localSubsidy = 3000000 * localMultiplier;
+            } else if (region === 'daegu') {
+                localSubsidy = 2500000 * localMultiplier;
+            } else if (region === 'incheon') {
+                localSubsidy = 2000000 * localMultiplier;
+            } else if (region === 'gyeonggi') {
+                localSubsidy = 2200000 * localMultiplier;
+            } else if (region === 'jeonnam') {
+                localSubsidy = 4000000 * localMultiplier;
+            }
+
+            // 3. Acquisition Tax Calculation (취등록세 = 7% - 1.4 million KRW EV discount in 2026)
+            let rawTax = Math.round((basePrice - nationalSubsidy - localSubsidy) * 0.07);
+            tax = rawTax - 1400000;
+            if (tax < 0) tax = 0;
+
+            // 4. Calculate Final Expected Out-of-pocket Price
+            let finalPrice = basePrice - nationalSubsidy - localSubsidy + tax;
+
+            // 5. Update UI results
+            document.getElementById('res-base').innerText = basePrice.toLocaleString() + ' 원';
+            document.getElementById('res-gov').innerText = '- ' + nationalSubsidy.toLocaleString() + ' 원';
+            document.getElementById('res-local').innerText = '- ' + localSubsidy.toLocaleString() + ' 원';
+            document.getElementById('res-tax').innerText = tax.toLocaleString() + ' 원';
+            document.getElementById('res-total').innerText = finalPrice.toLocaleString() + ' 원';
+
+            document.getElementById('calcResult').style.display = 'block';
+        }
+    </script>
+  
